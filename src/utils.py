@@ -13,3 +13,12 @@ def modificar_string(palabra, indice, letra):
             resultado += letra
         else: resultado += x
     return resultado
+
+#Cambiar mayuscula por minuscula y minuscula por mayuscula
+def cambiar_mayuscula(cadena):
+    x=len(cadena)
+    if x <=100:
+        cadena=cadena.swapcase()
+        return cadena
+    else:
+        return "No se puede cambiar cadena muy larga"
