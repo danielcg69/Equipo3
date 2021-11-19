@@ -22,3 +22,15 @@ def cambiar_mayuscula(cadena):
         return cadena
     else:
         return "No se puede cambiar cadena muy larga"
+
+# Encontrar el subcampeón.
+def subcampeon(puntajes):
+    campeon = puntajes[0]
+    for i in puntajes:
+        if i > campeon:
+            campeon = i
+    subcampeon = puntajes[0]
+    for i in puntajes:
+        if campeon > i > subcampeon:
+            subcampeon = i
+    print(subcampeon)
