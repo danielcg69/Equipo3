@@ -34,3 +34,7 @@ def subcampeon(puntajes):
         if campeon > i > subcampeon:
             subcampeon = i
     print(subcampeon)
+
+def imprimir_triangulo(numero):
+    for x in range(numero+1):
+        print(str(x)*x)
