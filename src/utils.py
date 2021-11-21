@@ -34,3 +34,8 @@ def subcampeon(puntajes):
         if campeon > i > subcampeon:
             subcampeon = i
     print(subcampeon)
+
+#Capitalización primera letra nombre y apellido
+def capitalizado(nombre, apellido):
+    print(nombre.capitalize() +' '+  apellido.capitalize())
+
