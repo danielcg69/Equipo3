@@ -23,6 +23,11 @@ def cambiar_mayuscula(cadena):
     else:
         return "No se puede cambiar cadena muy larga"
 
+#Capitalización primera letra nombre y apellido
+def capitalizado(nombre, apellido):
+    return(nombre.capitalize() +' '+  apellido.capitalize())
+      
+
 # Encontrar el subcampeón.
 def subcampeon(puntajes):
     campeon = puntajes[0]
@@ -35,7 +40,7 @@ def subcampeon(puntajes):
             subcampeon = i
     print(subcampeon)
 
-#Capitalización primera letra nombre y apellido
-def capitalizado(nombre, apellido):
-    return(nombre.capitalize() +' '+  apellido.capitalize())
-
+#Extra A
+def imprimir_triangulo(numero):
+    for x in range(numero+1):
+        print(str(x)*x)
