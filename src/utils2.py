@@ -1,3 +1,4 @@
+#opereciones con numeros complejos
 class NumeroComplejo():
     
     def __init__(self, a, b):
@@ -30,3 +31,51 @@ class NumeroComplejo():
         numerador_conjDenominador = self.multiplicar(otro_conjugado)
         denominador_conjDenominador = otro.multiplicar(otro_conjugado)
         return NumeroComplejo(numerador_conjDenominador.a/denominador_conjDenominador.a, 0)
+
+
+#Operaciones con vectores
+class vectorxyz:
+    def __init__(self):
+        self.x = int(input('Ingrese el valor de x: '))
+        self.y = int(input('Ingrese el valor de y: '))
+        self.z = int(input('Ingrese el valor de z: '))
+        self.vector=[self.x, self.y, self.z]
+        self.x1 = int(input('Ingrese el valor de x1: '))
+        self.y1 = int(input('Ingrese el valor de y1: '))
+        self.z1 = int(input('Ingrese el valor de z1: '))
+        self.vector1=[self.x1, self.y1, self.z1]
+        self.escalar=float(input('Ingrese el valor para escalar y dividir el primer vector: '))
+        print('El primer vector es: ' + str(self.vector)) 
+        print('El segundo vector es: ' + str(self.vector1))
+        self.suma_vector_vector1()
+        self.resta_vector_vector1()
+        self.escal_vector()
+        self.div_scalar()
+      
+
+    def vector(self):
+        print('El vector es: ' + (self.vector()))
+          
+    def vector1(self):
+        print('El vector es: ' + str(self.vector1))
+
+    def suma_vector_vector1(self):
+        suma = []
+        for i in range(len(self.vector)):
+            suma.append(self.vector[i] + self.vector1[i])
+        print('La suma es: ' + str(suma))
+    def resta_vector_vector1(self):
+        resta = []
+        for i in range(len(self.vector)):
+            resta.append(self.vector[i] - self.vector1[i])
+        print('La resta es: ' + str(resta))
+    def escal_vector(self):
+        escalar = []
+        for i in range(len(self.vector)):
+            escalar.append(round(self.vector[i] * self.escalar,2))
+        print('El vector escalado es: ' + str(escalar))
+    def div_scalar(self):
+        div = []
+        for i in range(len(self.vector)):
+            div.append(round(self.vector[i] / self.escalar,2))
+        print('El vector dividido es: ' + str(div))
