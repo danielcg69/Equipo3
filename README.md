@@ -42,4 +42,12 @@ d 2
 
 3- Crear una clase que represente una matriz de 3x3 dimensiones. Tengan 3 metodos que permitan las operaciones matematicas basicas (excluimos la division) (+ y - entre matrices, * solo por un vector).
 
-4- Crear una clase que represente al perfil usuario que ademas tenga una relacion (herencia) con estas dos clases: administrador y reportero (solo tiene lectura de datos). El usuario tiene objeto carrito de compras. El administrador puede ver a todos los usuarios y lo que tenga adentro. El reporter solo ve todos los carritos de compra.
+4- Crear una clase que represente al perfil usuario que ademas tenga una relacion (herencia) con estas dos clases:
+administrador y reportero (solo tiene lectura de datos).
+El usuario tiene objeto carrito de compras.
+El administrador puede ver a todos los usuarios y lo que tenga adentro.
+El reporter solo ve todos los carritos de compra.
+
+5- Para la clase base del punto 4 (del usuario), van a crear otra clase que pueda instanciar los objetos usuario, administrador o reporter pasandole como parametro el type.
+
+6- Crear una clase base servidor que pueda escuchar y escribir en puertos <8080> devolviendo un "Hola mundo"
