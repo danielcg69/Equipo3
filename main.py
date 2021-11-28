@@ -28,7 +28,7 @@ print(modificar_string(frase,n,letra))
 #vectores=vectorxyz()
 
 #Creo carritos
-
+'''
 Carro1 = carrito(10)
 Carro2 = carrito(10)
 Carro3 = carrito(10)
@@ -57,8 +57,16 @@ ListUsers = Users()
 Administra = UserCrate("Administrador","administrador@gmail.com","C:/avtr","A",Wharehouse1)
 UsuarioComun = UserCrate("Marcelo Lopez","usuariocomun@gmail.com","C:/avtr","U",Wharehouse1)
 
+UsuarioComun.muestra_carrito()
+
+
 print(Wharehouse1.Almacen)
 print(ListUsers.Usuarios)
 print(Administra.uname)
 print(Administra.email)
 print(Administra.URiAvatar)
+'''
+palabra = "los espacios son"
+sinespacios = cambia_espacios(palabra)
+
+print(sinespacios)
