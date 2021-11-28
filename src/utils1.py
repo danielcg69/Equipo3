@@ -1,14 +1,20 @@
-def cambia_espacios(cadena):
+
     #No hace falta el for. la función replace cambia todos los espacios q encuentra por el guión
-    return cadena.replace("","-")
+#    return cadena.replace(" ","-")
 
-#    for i in range(len(cadena)):
-#        if cadena[i]==" ":
-#            cadena=cadena.replace(" ","-")
-#    return cadena
+def cambia_espacios(cadena):
+    cadAux = ""
+    
+    for i in range(len(cadena)):
+       if cadena[i] == " ":
+            cadAux += "-"
+       else:
+            cadAux += cadena[i] 
+    
+    return cadAux
 
 
-#Que ejercicio es esta función? (Leo J)
+#Que ejercicio es esta función? (Leo J), pone letra en la posición indicada por indice
 def modificar_string(palabra, indice, letra):
     resultado = ''
     contador = 0
