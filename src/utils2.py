@@ -79,3 +79,30 @@ class vectorxyz:
         for i in range(len(self.vector)):
             div.append(round(self.vector[i] / self.escalar,2))
         print('El vector dividido es: ' + str(div))
+
+
+#3- Crear una clase que represente una matriz de 3x3 dimensiones. 
+# Tengan 3 metodos que permitan las operaciones matematicas basicas 
+#(excluimos la division) (+ y - entre matrices, * solo por un vector).
+
+
+
+#Crear una clase que represente al perfil usuario que ademas tenga una relacion (herencia) con estas
+#dos clases: administrador y reportero (solo tiene lectura de datos). El usuario tiene objeto 
+#carrito de compras. El administrador puede ver a todos los usuarios y lo que tenga adentro. 
+#El reporter solo ve todos los carritos de compra.
+#Leo J: 23-11-21
+
+class PerfilUsuario:
+    #atributo de clase
+    
+    def __init__(self,usuario,clave):
+        self.usuario = usuario
+        self.clave = clave
+
+class Usuario(PerfilUsuario):
+    #Atributos
+    
+    def carrito(self):
+        self.carrito
+        
