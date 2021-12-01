@@ -1,6 +1,8 @@
 from src.utils1 import *
 from src.utils2 import *
 from utils4 import *
+from src.utils5 import Handler
+from http.server import HTTPServer
 
 # print("Cambiar espacios por guiones")
 # cad=input("Ingrese una frase: ")
@@ -71,7 +73,14 @@ print(Administra.uname)
 print(Administra.email)
 print(Administra.URiAvatar)
 '''
+
 palabra = "los espacios son"
 sinespacios = cambia_espacios(palabra)
 
 print(sinespacios)
+
+'''
+#Ejercicio 6
+with HTTPServer(('', 8080), Handler) as servidor:
+    servidor.serve_forever()
+'''
