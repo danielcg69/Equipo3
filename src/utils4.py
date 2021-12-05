@@ -4,6 +4,8 @@
 #administrador y reportero (solo tiene lectura de datos).El usuario tiene objeto carrito de compras.El administrador puede ver 
 # a todos los usuarios y lo que tenga adentro.El reporter solo ve todos los carritos de compra.
 
+from abc import ABC, abstractmethod
+
 class Carrito(): #clase que representa a los carritos q son atributos de los usuarios
     capacidad = 0
     
@@ -40,7 +42,7 @@ class Storage(): #lista de los carritos de los usuarios. Es el almacén
     almacen = []
     ocupacion = 0
     
-    def __init__(self, carrito) -> None:
+    def __init__(self, carrito=None) -> None:
         self.almacen = [carrito]
 
     def cantidad_items(self) -> int:
@@ -48,7 +50,10 @@ class Storage(): #lista de los carritos de los usuarios. Es el almacén
         return self.ocupacion
     
     def agregar_carrito(self, carrito) -> None:
-        self.almacen.append(carrito)
+        if self.almacen[0] == None:
+            self.almacen[0] = carrito
+        else:
+            self.almacen.append(carrito)
         self.ocupacion += 1
     
     def sacar_carrito(self, carrito) -> None:
@@ -67,59 +72,73 @@ stor1 = Storage(ejemplo1)
 stor1.agregar_carrito(ejemplo2)
 print(stor1)
 
-"""
-class UserTemplate:  #clase abstracta
+
+class UserTemplate(ABC):  #clase abstracta
     Perfil=""
     
-    def __init__(self,uname,email,URiAvatar) -> None:
-         self.uname=uname
-         self.email=email
-         self.URiAvatar=URiAvatar
-         
-    def __str__(self) -> str:
-        pass
-        
-    def muestra_carrito(self, uname) -> None:
-        pass
+    def __init__(self, uname, email, URiAvatar) -> None:
+         self.uname = uname
+         self.email = email
+         self.URiAvatar = URiAvatar
     
-    def muestra_usuarios(self, uname) -> None:
-        pass
-    
+    @abstractmethod     
     def __str__(self) -> str:
         pass
     
-class Users: #es la lista de usuarios
-    Usuarios =[]
+    @abstractmethod    
+    def mostrar_carritos(self, uname) -> None:
+        pass
+    
+    @abstractmethod
+    def mostrar_usuarios(self, uname) -> None:
+        pass
+    
+    @abstractmethod
+    def __str__(self) -> str:
+        pass
+    
+class Users(): #es la lista de usuarios
+    usuarios =[]
     
     def __init__(self) -> None:
         pass
 
-    def AgregaUsuario(self,Usuarios) -> None:
-        Usuarios.append((UserTemplate.uname,UserTemplate.email))
+    def agregar_usuario(self, usuario) -> None:
+        self.usuarios.append(usuario.uname())
     
-    def __str__(self,Usuarios) -> str:
-        cadena= "Los usuarios son:" + " "
-        for i in range(len(Usuarios)):
-            cadena= cadena + Usuarios[i] + ", "
+    def __str__(self) -> str:
+        cadena = "Los usuarios son:"
+        for i in self.usuarios:
+            cadena += f"\n -{i}"
         return
 
 class Admin(UserTemplate):
-    Perfil = "A"
+    perfil = "A"
     
-    def __init__(self, uname, email, URiAvatar, Stor:Storage) -> None:
-        super().__init__(uname, email, URiAvatar)    
+    def __init__(self, uname, email, URiAvatar, stor=Storage(), users=Users()) -> None:
+        super().__init__(uname, email, URiAvatar)
+        self.stor = stor
+        self.users = users
 
-    def muestra_carritos(Stor) -> None:
-       print("Los carritos contienen: ", Stor )
+    def mostrar_carritos(self) -> None:
+       print("Los carritos contienen: ", self.stor)
     
-    def muestra_usuarios(self, list) -> None:
-        print("Los usuarios son: " ,list )
+    def mostrar_usuarios(self) -> None:
+        print(self.users)
     
     def __str__(self) -> str:
-        return super().__str__()
-    
+        return f"{self.uname}, {self.email}, {self.URiAvatar}"
+
+admin1 = Admin('Juan', 'juan@mail.com', 'juan_admin')
+print(admin1)
+admin1.stor.agregar_carrito(ejemplo1)
+admin1.stor.agregar_carrito(ejemplo1)
+admin1.stor.agregar_carrito(ejemplo2)
+print(admin1.stor)
+
+"""    
 class Reporter(UserTemplate):
-    Perfil = "R"
+    perfil = "R"
     
     def __init__(self, uname, email, URiAvatar, Stor:Storage) -> None:
         super().__init__(uname, email, URiAvatar)
@@ -134,7 +153,7 @@ class Reporter(UserTemplate):
         return super().__str__()
     
 class Usuario(UserTemplate):
-    Perfil = "U"
+    perfil = "U"
     Ucarrito = carrito(10)
     
     def __init__(self, uname, email, URiAvatar,stor:Storage) -> None:
@@ -152,17 +171,17 @@ class Usuario(UserTemplate):
     def __str__(self) -> str:
         return super().__str__()
     
-class UserCrate(UserTemplate):
-    def __init__(self, uname, email, URiAvatar,type,stor) -> None:
-        self.uname=uname
-        self.email=email
-        self.URiAvatar=URiAvatar
-        if (type=="A"):   
-            Admin(uname,email,URiAvatar,stor)
-        elif(type=="R"):
-            Reporter(uname,email,URiAvatar,stor)
-        elif(type=="U"):
-            Usuario(uname,email,URiAvatar,stor)
+class UserCreate(UserTemplate):
+    def __init__(self, uname, email, URiAvatar, type, stor) -> None:
+        self.uname = uname
+        self.email = email
+        self.URiAvatar = URiAvatar
+        if (type == "A"):   
+            Admin(uname, email, URiAvatar, stor)
+        elif(type == "R"):
+            Reporter(uname, email, URiAvatar, stor)
+        elif(type == "U"):
+            Usuario(uname, email, URiAvatar, stor)
         else:
             print("Tipo de usuario incorrecto")
 """
